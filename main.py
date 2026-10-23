@@ -1,4 +1,4 @@
-"""俄语网课实时翻译助手 · 入口与控制器。
+"""中英俄实时翻译软件 · 入口与控制器。
 
 状态机：IDLE → STARTING → RUNNING ⇄ PAUSED → ENDING → IDLE，关键异常进 ERROR。
 启动：python main.py（单窗口模式：只启动置顶字幕窗，所有功能在悬浮条+设置内）
@@ -530,8 +530,8 @@ class Controller(QObject):
             missing.append("翻译服务 API Key")
         if missing:
             msg = QMessageBox(self.subtitle)
-            msg.setWindowTitle("欢迎使用 HiLanguageOL")
-            msg.setText("欢迎使用俄语网课实时翻译助手！\n\n"
+            msg.setWindowTitle("中英俄实时翻译软件")
+            msg.setText("欢迎使用中英俄实时翻译软件！\n\n"
                         f"还缺少：{'、'.join(missing)}。\n"
                         "识别与翻译是两套独立服务，可以分别填写各自的地址与 Key。\n"
                         "你可以现在配置，也可以稍后在设置中配置。\n\n"
@@ -557,7 +557,7 @@ def _ensure_single_instance(app: QApplication) -> bool:
     handle = CreateMutexW(None, False, "Global\\hilanguage-ol-single-instance")
     if GetLastError() == 183:  # ERROR_ALREADY_EXISTS
         QMessageBox.information(
-            None, "俄语网课翻译助手",
+            None, "中英俄实时翻译软件",
             "程序已在运行中（单实例）。\n请在系统托盘图标或任务栏中找到它，"
             "或先用托盘菜单/退出按钮关闭旧实例。",
         )
@@ -632,7 +632,7 @@ def main() -> int:
             pass
         try:
             QMessageBox.critical(
-                None, "俄语网课翻译助手 - 启动失败",
+                None, "中英俄实时翻译软件 - 启动失败",
                 f"程序启动失败，详情见 crash.log：\n\n{traceback.format_exc()[-600:]}",
             )
         except Exception:  # noqa: BLE001

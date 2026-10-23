@@ -1,12 +1,12 @@
-; ============================================================
-;  HiLanguageOL 俄语网课实时翻译助手 —— Inno Setup 安装脚本
+﻿; ============================================================
+;  HiLanguageOL 中英俄实时翻译软件 —— Inno Setup 安装脚本
 ;  编译: build.bat 会自动调用；也可手动：
 ;        "%LOCALAPPDATA%\Programs\Inno Setup 6\ISCC.exe" installer.iss
 ;  产物: installer\HiLanguageOL-Setup-<版本>.exe
 ; ============================================================
 
 #define MyAppName "HiLanguageOL"
-#define MyAppNameCN "俄语网课实时翻译助手"
+#define MyAppNameCN "中英俄实时翻译软件"
 #define MyAppVersion "1.0.6"
 #define MyAppPublisher "HiLanguage"
 #define MyAppExeName "HiLanguageOL.exe"

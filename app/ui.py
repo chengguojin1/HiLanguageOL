@@ -239,7 +239,7 @@ class SubtitleWindow(QWidget):
                 icon = QIcon(pm)
             self.tray = QSystemTrayIcon(self)
             self.tray.setIcon(icon)
-            self.tray.setToolTip("俄语网课实时翻译助手")
+            self.tray.setToolTip("中英俄实时翻译软件")
             menu = theme.GlassMenu()
             self.act_tray_toggle = menu.addAction("显示 / 隐藏窗口")
             menu.addSeparator()
@@ -1277,7 +1277,7 @@ class SettingsDialog(theme.GlassDialog):
     def __init__(self, cfg, parent=None):
         super().__init__("设置", parent)
         self._cfg = cfg
-        self.set_subtitle("HiLanguageOL · 课堂实时翻译")
+        self.set_subtitle("HiLanguageOL · 中英俄实时翻译")
         self.test_done.connect(self._on_test_done)
         self.setMinimumSize(600, 540)
         tabs = QTabWidget()

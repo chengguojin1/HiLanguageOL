@@ -16,12 +16,12 @@ VSVersionInfo(
       StringTable(
         '080404B0',
         [StringStruct('CompanyName', 'HiLanguage'),
-         StringStruct('FileDescription', 'HiLanguageOL 俄语网课实时翻译助手'),
+         StringStruct('FileDescription', 'HiLanguageOL 中英俄实时翻译软件'),
          StringStruct('FileVersion', '1.0.6.0'),
          StringStruct('InternalName', 'HiLanguageOL'),
          StringStruct('LegalCopyright', 'Copyright (C) 2026 HiLanguage'),
          StringStruct('OriginalFilename', 'HiLanguageOL.exe'),
-         StringStruct('ProductName', 'HiLanguageOL 俄语网课实时翻译助手'),
+         StringStruct('ProductName', 'HiLanguageOL 中英俄实时翻译软件'),
          StringStruct('ProductVersion', '1.0.6.0')])
     ]),
     VarFileInfo([VarStruct('Translation', [2052, 1200])])
