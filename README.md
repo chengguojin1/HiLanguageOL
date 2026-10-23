@@ -48,7 +48,7 @@
 ### 2. 安装
 
 ```bat
-git clone <本仓库地址> HiLanguageOL
+git clone https://github.com/chengguojin1/HiLanguageOL.git
 cd HiLanguageOL
 python -m venv .venv
 .venv\Scripts\pip install -r requirements.txt
