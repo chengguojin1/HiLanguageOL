@@ -14,7 +14,7 @@
 from __future__ import annotations
 
 import random
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 from PyQt6.QtCore import QPointF, QRectF, Qt
 from PyQt6.QtGui import (
@@ -337,7 +337,13 @@ class GlassDialog(QDialog):
     # -- 绘制 --
     def paintEvent(self, _event) -> None:  # noqa: N802
         p = QPainter(self)
-        paint_glass(p, self.panel_rect(), self.RADIUS, alpha=0.90, shadow=190)
+        # 对话框面积大、底下多半是深色桌面，普通玻璃会显得像一块纯色板；
+        # 这里单独加强顶部高光与上沿描边，让"玻璃"看得出来。
+        base = current_skin()
+        sk = replace(base,
+                     sheen_alpha=max(46, base.sheen_alpha),
+                     rim_top=QColor(255, 255, 255, 215))
+        paint_glass(p, self.panel_rect(), self.RADIUS, alpha=0.80, shadow=190, skin=sk)
         p.end()
 
     # -- 拖动标题栏 --

@@ -1685,24 +1685,30 @@ class SettingsDialog(theme.GlassDialog):
                 _f.write(f"\n[{_t.strftime('%Y-%m-%d %H:%M:%S')}] {'成功' if ok else '失败'}\n{msg}\n")
         except Exception:
             pass
-        # 使用可滚动的对话框显示完整报错
-        dlg = QDialog(self)
-        dlg.setWindowTitle("服务测试结果")
-        dlg.resize(650, 450)
-        layout = QVBoxLayout(dlg)
+        # 使用可滚动的玻璃对话框显示完整报错
+        dlg = theme.GlassDialog("服务测试结果", self)
+        dlg.set_subtitle("识别 / 翻译服务连通性")
+        dlg.resize(680, 500)
+        layout = dlg.body
         title = "✅ 测试成功" if ok else "❌ 测试失败"
         from PyQt6.QtWidgets import QLabel
         lbl = QLabel(title)
-        lbl.setStyleSheet("font-size:16px;font-weight:bold;color:" + ("#16A34A" if ok else "#DC2626") + ";")
+        lbl.setStyleSheet("font-size:16px;font-weight:600;color:"
+                          + ("#5BE3A6" if ok else "#FF8C8C") + ";")
         layout.addWidget(lbl)
         text = QTextEdit()
         text.setReadOnly(True)
         text.setPlainText(msg)
         text.setStyleSheet("font-family:Consolas,monospace;font-size:12px;")
-        layout.addWidget(text)
-        btns = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok)
-        btns.accepted.connect(dlg.accept)
-        layout.addWidget(btns)
+        layout.addWidget(text, 1)
+        row = QHBoxLayout()
+        row.addStretch(1)
+        ok_btn = QPushButton("关闭")
+        ok_btn.setObjectName("primary")
+        ok_btn.setMinimumWidth(90)
+        ok_btn.clicked.connect(dlg.accept)
+        row.addWidget(ok_btn)
+        layout.addLayout(row)
         dlg.exec()
 
     @staticmethod
