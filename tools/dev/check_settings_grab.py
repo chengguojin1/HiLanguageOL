@@ -46,6 +46,7 @@ def main() -> int:
     bg.setAutoFillBackground(True)
     bg.setPalette(pal)
     bg.setGeometry(180, 120, 760, 760)
+    bg.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint, True)
     bg.show()
     bg.raise_()
 

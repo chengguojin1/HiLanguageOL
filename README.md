@@ -22,6 +22,12 @@
 - **课堂留档**：录音 WAV、SRT/VTT/TXT 转写、课堂纪要（markdown）
 - **不打扰**：不翻译时静置自动收进托盘；全局只占一个托盘图标，无控制台窗口
 
+实际使用（深色玻璃 / 极光玻璃）：
+
+| 深色玻璃 | 极光玻璃 |
+|---|---|
+| ![深色玻璃](docs/screenshots/usage-dark.png) | ![极光玻璃](docs/screenshots/usage-aurora.png) |
+
 | 字幕模式（自动配色） | 设置页 |
 |---|---|
 | ![字幕模式](docs/screenshots/caption.png) | ![设置](docs/screenshots/settings.png) |
