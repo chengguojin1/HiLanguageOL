@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+
+# 配置（含 API Key，禁止提交）
+config.ini
+
+# 会话产物
+sessions/
+*.wav
+*.mp3
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 打包产物（体积大，可随时重新生成）
+build/
+dist/
+installer/*.exe
+*.spec.bak
+
+# 临时文件
+*.tmp
+*.bak
+_test*.py
+_fix*.py
+_debug*.py
+_e2e*.py
+
+# 预览/验证脚本生成的图片与临时配置（可随时重新生成）
+tools/dev/out/

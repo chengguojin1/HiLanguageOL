@@ -1,0 +1,17 @@
+# HiLanguageOL 运行依赖（实时翻译助手）
+# 说明：识别服务与翻译服务各自独立配置，见 config.example.ini
+PyQt6>=6.6,<7
+numpy>=1.24
+requests>=2.31
+soundfile>=0.12           # WAV/MP3/FLAC 读写（录音落盘、时长解析）
+websocket-client>=1.6     # 阿里云识别服务 WebSocket 流式接口
+grpcio>=1.60              # Yandex SpeechKit gRPC 流式识别（俄罗斯本地 ASR）
+grpcio-tools>=1.60        # 生成 Yandex proto Python 代码（仅开发时需要）
+protobuf>=4.25            # gRPC/protobuf 运行时
+PyAudioWPatch>=0.2.12     # WASAPI 回环 + 麦克风采集（Windows 专用，pyaudio 分支）
+
+# 打包（可选）
+# pyinstaller>=6.0
+
+# 仅重新生成图标时需要（app/icon/app.ico 已生成好，日常运行不需要）
+# pillow>=10.0

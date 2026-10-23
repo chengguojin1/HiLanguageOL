@@ -1,0 +1,29 @@
+# UTF-8
+# PyInstaller 版本信息资源：Windows「属性 → 详细信息」里显示的公司/产品/版本/版权
+VSVersionInfo(
+  ffi=FixedFileInfo(
+    filevers=(1, 0, 6, 0),
+    prodvers=(1, 0, 6, 0),
+    mask=0x3f,
+    flags=0x0,
+    OS=0x40004,
+    fileType=0x1,
+    subtype=0x0,
+    date=(0, 0)
+  ),
+  kids=[
+    StringFileInfo([
+      StringTable(
+        '080404B0',
+        [StringStruct('CompanyName', 'HiLanguage'),
+         StringStruct('FileDescription', 'HiLanguageOL 俄语网课实时翻译助手'),
+         StringStruct('FileVersion', '1.0.6.0'),
+         StringStruct('InternalName', 'HiLanguageOL'),
+         StringStruct('LegalCopyright', 'Copyright (C) 2026 HiLanguage'),
+         StringStruct('OriginalFilename', 'HiLanguageOL.exe'),
+         StringStruct('ProductName', 'HiLanguageOL 俄语网课实时翻译助手'),
+         StringStruct('ProductVersion', '1.0.6.0')])
+    ]),
+    VarFileInfo([VarStruct('Translation', [2052, 1200])])
+  ]
+)
