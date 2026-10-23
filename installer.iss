@@ -7,7 +7,7 @@
 
 #define MyAppName "HiLanguageOL"
 #define MyAppNameCN "中英俄实时翻译软件"
-#define MyAppVersion "1.0.7"
+#define MyAppVersion "1.0.8"
 #define MyAppPublisher "HiLanguage"
 #define MyAppExeName "HiLanguageOL.exe"
 #define MyAppURL "https://github.com/hilanguage/HiLanguageOL"
@@ -23,7 +23,7 @@ AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 AppCopyright=Copyright (C) 2026 {#MyAppPublisher}
-VersionInfoVersion=1.0.7.0
+VersionInfoVersion=1.0.8.0
 VersionInfoCompany={#MyAppPublisher}
 VersionInfoDescription={#MyAppName} {#MyAppNameCN} 安装程序
 VersionInfoProductName={#MyAppName} {#MyAppNameCN}
