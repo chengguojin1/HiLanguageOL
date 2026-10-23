@@ -241,13 +241,28 @@ def _loopback_candidates() -> list[dict]:
 
 
 def _mic_candidates() -> list[dict]:
+    """麦克风候选：优先 WASAPI。
+
+    同一支麦克风会同时出现在 MME / DirectSound / WASAPI 三个主机 API 下，
+    名字完全相同。以前的实现按名字取第一个，往往拿到 MME 的 44.1kHz 立体声
+    端点——蓝牙耳机（HFP 麦克风只有 16kHz 单声道）走这条路经常采不到声音，
+    或者被系统静音。WASAPI 是 Windows 原生路径，也和后端回环采集一致。
+    """
     with _pa_lock:
         pa = _get_pa()
         devs = [d for d in _devices(pa)
                 if not _is_loopback(d)
                 and d.get("maxInputChannels", 0) > 0
                 and not _is_aggregate(d)]
-    return devs
+        wasapi = []
+        for d in devs:
+            try:
+                api = pa.get_host_api_info_by_index(int(d.get("hostApi", -1)))
+                if "wasapi" in str(api.get("name", "")).lower():
+                    wasapi.append(d)
+            except Exception:  # noqa: BLE001
+                continue
+    return wasapi or devs
 
 
 def list_loopback_devices() -> list[str]:
