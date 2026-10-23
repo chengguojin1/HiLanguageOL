@@ -240,7 +240,7 @@ class SubtitleWindow(QWidget):
             self.tray = QSystemTrayIcon(self)
             self.tray.setIcon(icon)
             self.tray.setToolTip("俄语网课实时翻译助手")
-            menu = QMenu()
+            menu = theme.GlassMenu()
             self.act_tray_toggle = menu.addAction("显示 / 隐藏窗口")
             menu.addSeparator()
             self.act_tray_start = menu.addAction("开始翻译")
@@ -368,7 +368,7 @@ class SubtitleWindow(QWidget):
         self.toolbar.hide()
 
     def _show_more_menu(self) -> None:
-        menu = QMenu(self)
+        menu = theme.GlassMenu(self)
         act_open = menu.addAction("打开纪要目录")
         act_cfg = menu.addAction("打开配置目录（API Key 在这里）")
         menu.addSeparator()

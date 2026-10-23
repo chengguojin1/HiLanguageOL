@@ -21,7 +21,9 @@ from PyQt6.QtGui import (
     QColor, QFont, QImage, QLinearGradient, QPainter, QPainterPath, QPen,
     QPixmap, QRadialGradient,
 )
-from PyQt6.QtWidgets import QDialog, QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QWidget
+from PyQt6.QtWidgets import (
+    QDialog, QHBoxLayout, QLabel, QMenu, QPushButton, QVBoxLayout, QWidget,
+)
 
 # ---------------------------------------------------------------- 调色板
 TEXT = QColor("#EDF1FA")            # 主文字
@@ -345,6 +347,41 @@ class GlassDialog(QDialog):
                      rim_top=QColor(255, 255, 255, 215))
         paint_glass(p, self.panel_rect(), self.RADIUS, alpha=0.80, shadow=190, skin=sk)
         p.end()
+
+
+class GlassMenu(QMenu):
+    """玻璃质感的弹出菜单（工具条 ⋯ / 托盘右键）。
+
+    QMenu 是系统绘制的弹出窗口，只写 QSS 只能改颜色。这里把窗口设成透明，
+    自己画一层玻璃，再让 QMenu 把菜单项画在上面。
+    """
+
+    RADIUS = 12
+
+    def __init__(self, parent=None) -> None:
+        super().__init__(parent)
+        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, True)
+        self.setWindowFlag(Qt.WindowType.NoDropShadowWindowHint, True)
+        self.setStyleSheet(
+            "QMenu{background:transparent;border:none;padding:7px;}"
+            "QMenu::item{padding:7px 20px;border-radius:7px;color:#E9EEF9;}"
+            "QMenu::item:selected{background:rgba(138,180,255,0.22);}"
+            "QMenu::item:disabled{color:rgba(233,238,249,0.35);}"
+            "QMenu::separator{height:1px;background:rgba(255,255,255,0.10);"
+            "margin:5px 10px;}"
+        )
+
+    def paintEvent(self, event) -> None:  # noqa: N802
+        p = QPainter(self)
+        p.setRenderHint(QPainter.RenderHint.Antialiasing, True)
+        base = current_skin()
+        sk = replace(base,
+                     sheen_alpha=max(40, base.sheen_alpha),
+                     rim_top=QColor(255, 255, 255, 200))
+        paint_glass(p, QRectF(self.rect()).adjusted(0.5, 0.5, -0.5, -0.5),
+                    self.RADIUS, alpha=0.90, skin=sk)
+        p.end()
+        super().paintEvent(event)
 
     # -- 拖动标题栏 --
     def mousePressEvent(self, event) -> None:  # noqa: N802
